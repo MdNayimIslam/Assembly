@@ -1,0 +1,31 @@
+INCLUDE 'EMU8086.INC'
+.MODEL SMALL
+.STACK 100H
+.DATA
+
+.CODE
+    MAIN PROC
+
+    PRINT "INPUT FIRST DIGIT: $"
+    MOV AH, 1
+    INT 21H
+    MOV BL, AL
+    PRINTN " $"
+
+    PRINT "INPUT SECOND DIGIT: $"
+    MOV AH, 1
+    INT 21H
+    SUB BL, AL
+    ADD BL, 48
+    PRINTN " $"
+
+    PRINT "Result: $"
+    MOV AH, 2
+    MOV DL, BL
+    INT 21H
+
+    MOV AH, 4CH
+    INT 21H
+
+    MAIN ENDP
+END MAIN
